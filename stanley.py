@@ -1,4 +1,4 @@
-﻿import socket
+import socket
 import os
 import shutil
 import random
@@ -745,15 +745,17 @@ def main():
         sys.exit(0)
 
 
+pink = "\x1b[38;2;255;170;215m"
+skin = "\x1b[38;2;245;230;235m"
+blush = "\x1b[38;2;255;130;150m"
+eye = "\x1b[38;2;130;215;255m"
+gold = "\x1b[38;2;255;240;150m"
+violet = "\x1b[38;2;190;130;255m"
+cyan = "\x1b[38;2;0;255;255m"
+reset = "\x1b[0m"
+
+
 def boot_screen():
-    pink = "\x1b[38;2;255;170;215m"
-    skin = "\x1b[38;2;245;230;235m"
-    blush = "\x1b[38;2;255;130;150m"
-    eye = "\x1b[38;2;130;215;255m"
-    gold = "\x1b[38;2;255;240;150m"
-    violet = "\x1b[38;2;190;130;255m"
-    cyan = "\x1b[38;2;0;255;255m"
-    reset = "\x1b[0m"
 
     # ═══════════════════════════════════════════════════════════════
     # 🎌 ANIME LOGO (from your provided ASCII art)
