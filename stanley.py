@@ -20,7 +20,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     print(f'✅ بوت {bot.user} جاهز للعمل!')
     # عرض حالة البوت
-    await bot.change_presence(activity=discord.Game(name="!help | !status"))
+    await bot.change_presence(activity=discord.Game(name="!myhelp | !status"))
 
 # ================== دالة التحقق من الصلاحيات ==================
 async def check_permissions(ctx):
@@ -60,9 +60,10 @@ async def status(ctx):
     """!status - عرض حالة البوت والغرفة المسموح بها."""
     await ctx.send(f"🟢 البوت شغال | الغرفة المسموح بها: {ALLOWED_CHANNEL_ID}")
 
-@bot.command(name="help")
+# ✅ تم تغيير اسم الأمر من help إلى myhelp
+@bot.command(name="myhelp", aliases=["commands", "cmds"])
 async def help_command(ctx):
-    """!help - عرض الأوامر المتاحة."""
+    """!myhelp - عرض الأوامر المتاحة."""
     embed = discord.Embed(
         title="📋 أوامر بوت Stanley - CNC",
         description="استخدم الأوامر التالية في الغرفة المصرح بها.",
@@ -70,7 +71,7 @@ async def help_command(ctx):
     )
     embed.add_field(name="!attack_homegod <IP> <port> <حجم> <وقت>", value="شن هجوم home-god", inline=False)
     embed.add_field(name="!status", value="عرض حالة البوت", inline=False)
-    embed.add_field(name="!help", value="عرض هذه المساعدة", inline=False)
+    embed.add_field(name="!myhelp", value="عرض هذه المساعدة", inline=False)
     await ctx.send(embed=embed)
 
 # ================== طلب التوكن وتشغيل البوت ==================
