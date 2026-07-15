@@ -3,10 +3,11 @@ from discord.ext import commands
 import subprocess
 import os
 import asyncio
+import sys
 
 # ================== إعدادات البوت ==================
-# تحذير: استخدم متغيرات البيئة لحماية التوكن!
-TOKEN = "MTUyNTY3NjMwNzg5NDI0MzM1OA.GyTqG_.w5fG8_sJU0pN6ks1lwRGqm5vJdUY-2DptSz038"
+# سيتم طلب التوكن عند التشغيل
+TOKEN = None
 ALLOWED_CHANNEL_ID = 1513410697294254170  # معرف الغرفة المسموح بها
 
 # تهيئة البوت مع صلاحيات قراءة المحتوى
@@ -72,9 +73,35 @@ async def help_command(ctx):
     embed.add_field(name="!help", value="عرض هذه المساعدة", inline=False)
     await ctx.send(embed=embed)
 
-# ================== تشغيل البوت ==================
+# ================== طلب التوكن وتشغيل البوت ==================
+def get_token():
+    """طلب التوكن من المستخدم"""
+    print("="*50)
+    print("🤖 تشغيل بوت Discord CNC")
+    print("="*50)
+    print("\n📌 للحصول على التوكن:")
+    print("1. اذهب إلى https://discord.com/developers/applications")
+    print("2. أنشئ تطبيق جديد")
+    print("3. من القائمة الجانبية اختر 'Bot'")
+    print("4. اضغط 'Reset Token' وانسخ التوكن")
+    print("\n" + "="*50)
+    
+    token = input("🔑 أدخل توكن البوت: ").strip()
+    
+    if not token:
+        print("❌ خطأ: التوكن لا يمكن أن يكون فارغاً!")
+        sys.exit(1)
+    
+    return token
+
 if __name__ == "__main__":
-    if not TOKEN:
-        print("❌ خطأ: لم يتم تعيين توكن البوت!")
-    else:
+    # طلب التوكن من المستخدم
+    TOKEN = get_token()
+    
+    # تشغيل البوت
+    try:
         bot.run(TOKEN)
+    except discord.LoginFailure:
+        print("❌ خطأ: التوكن غير صحيح! تأكد من نسخه بشكل صحيح.")
+    except Exception as e:
+        print(f"❌ خطأ غير متوقع: {e}")
