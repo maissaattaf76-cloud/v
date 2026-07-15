@@ -6,7 +6,7 @@ import asyncio
 
 # ================== إعدادات البوت ==================
 # تحذير: استخدم متغيرات البيئة لحماية التوكن!
-TOKEN = "MTUyNTY3NjMwNzg5NDI0MzM1OA.GBk3_w.HNj4K5oK2_QVQkjehm3XOgp2hRfHRJUjaJSJbg"
+TOKEN = "MTUyNTY3NjMwNzg5NDI0MzM1OA.GyTqG_.w5fG8_sJU0pN6ks1lwRGqm5vJdUY-2DptSz038"
 ALLOWED_CHANNEL_ID = 1513410697294254170  # معرف الغرفة المسموح بها
 
 # تهيئة البوت مع صلاحيات قراءة المحتوى
